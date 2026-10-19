@@ -87,11 +87,11 @@ Automated audits are not proof of full WCAG conformance. A screen-reader/assisti
 
 ## Deployment and operations
 
-Production runs on Vercel at [racik-sage.vercel.app](https://racik-sage.vercel.app), which remains connected to the original [Racik-Capstone repository](https://github.com/Ekazadex/Racik-Capstone). This repository is a separate code snapshot and is intentionally not connected to the existing Vercel project. Production secrets are stored as Vercel environment variables and are not committed.
+Production runs on Vercel at [racik-sage.vercel.app](https://racik-sage.vercel.app), connected to this repository. The existing Vercel project and domain were kept; no new project or domain was created. Production secrets are stored as Vercel environment variables and are not committed.
 
 ### Deployment checklist
 
-- [x] Keep the existing Vercel project connected to Racik-Capstone and create this separate repository without changing that deployment connection.
+- [x] Connect the existing Vercel project to this repository while preserving the existing production domain and project settings.
 - [x] Run tests, typecheck, lint, and production build.
 - [x] Rotate credentials previously exposed in chat; store replacement secrets only in Vercel.
 - [x] Configure `GOOGLE_GENERATIVE_AI_API_KEY`, `UPSTASH_REDIS_REST_URL`, and `UPSTASH_REDIS_REST_TOKEN` in the Production environment.

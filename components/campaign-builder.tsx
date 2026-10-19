@@ -221,7 +221,7 @@ export function CampaignBuilder() {
           </div>
         </header>
 
-        <main id="main" tabIndex={-1}>
+        <main id="main" className="language-transition" tabIndex={-1} key={language}>
           <section className="hero" aria-labelledby="page-title">
             <div>
               <p className="eyebrow">{t.eyebrow}</p>

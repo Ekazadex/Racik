@@ -38,10 +38,31 @@ describe('CampaignBuilder', () => {
     expect(screen.getByRole('heading', { name: 'Bikin kampanye yang terasa seperti kamu.' })).toBeInTheDocument();
     expect(screen.getByLabelText('Apa nama dan jenis produkmu?')).toBeInTheDocument();
     expect(document.documentElement).toHaveAttribute('lang', 'id');
+    expect(screen.getByRole('main')).toHaveClass('language-transition');
 
     await user.click(screen.getByRole('button', { name: 'English' }));
     expect(screen.getByRole('heading', { name: 'Create a campaign that feels like you.' })).toBeInTheDocument();
     expect(document.documentElement).toHaveAttribute('lang', 'en');
+  });
+
+  it('keeps the generated campaign when the interface language changes', async () => {
+    const user = userEvent.setup();
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ data: sampleResult }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    );
+    render(<CampaignBuilder />);
+
+    await user.click(screen.getByRole('button', { name: /try an example brief/i }));
+    await user.click(screen.getByRole('button', { name: /generate campaign ideas/i }));
+    expect(await screen.findByRole('heading', { name: 'A Lighter Start to the Day' })).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Bahasa Indonesia' }));
+
+    expect(screen.getByRole('heading', { name: 'Bikin kampanye yang terasa seperti kamu.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'A Lighter Start to the Day' })).toBeInTheDocument();
   });
 
   it('sends the selected language with a campaign request', async () => {

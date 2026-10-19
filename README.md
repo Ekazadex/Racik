@@ -104,6 +104,7 @@ Latest local verification:
 - Production browser axe audit detected **0 WCAG 2.1 A/AA violations**. A contrast review also led to changing placeholder color from `#8b9388` (3.17:1 on white) to `#687166` (5.07:1).
 - The mobile audit led to replacing the 633 KB decorative PNG with a 6.9 KB WebP and disabling fixed background attachment on mobile.
 - The current botanical background is a lightweight SVG, so its fine lines stay crisp on high-density and 4K screens.
+- Language changes and generated campaign cards use subtle motion; system reduced-motion preferences are respected.
 - [WebAIM WAVE audit](https://wave.webaim.org/report#/https://racik-sage.vercel.app) of the live English and Bahasa Indonesia interfaces on 2026-10-18: **0 errors, 0 contrast errors, 0 alerts; AIM score 10/10**.
 - Keyboard smoke test verified the skip link and brand link can be reached in order.
 

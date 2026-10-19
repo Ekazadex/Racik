@@ -158,11 +158,33 @@ a {
   color: var(--muted);
   font-size: 11px;
   font-weight: 700;
+  transition: background-color 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.language-switch button:hover {
+  transform: translateY(-1px);
 }
 
 .language-switch button[aria-pressed="true"] {
   background: var(--green);
   color: #fff;
+}
+
+.language-transition {
+  animation: language-refresh 360ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+  transform-origin: top center;
+}
+
+@keyframes language-refresh {
+  from {
+    opacity: 0.72;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero {
@@ -253,6 +275,12 @@ h1 {
   border-radius: 18px;
   background: var(--surface);
   box-shadow: 0 10px 35px rgb(33 48 33 / 4%);
+  transition: box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.panel:hover {
+  border-color: #d7dfd1;
+  box-shadow: 0 14px 40px rgb(33 48 33 / 7%);
 }
 
 .panel-header {
@@ -352,7 +380,7 @@ textarea.control {
   border-radius: 9px;
   font-size: 14px;
   font-weight: 700;
-  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .button:not(:disabled):active {
@@ -366,6 +394,8 @@ textarea.control {
 
 .button-primary:hover:not(:disabled) {
   background: var(--green-dark);
+  box-shadow: 0 5px 14px rgb(25 58 41 / 16%);
+  transform: translateY(-1px);
 }
 
 .button-secondary {
@@ -503,6 +533,7 @@ textarea.control {
   border-radius: 14px;
   background: #fcfcf8;
   text-align: center;
+  animation: state-reveal 420ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
 }
 
 .empty-illustration {
@@ -533,6 +564,58 @@ textarea.control {
   gap: 16px;
 }
 
+.result-content > * {
+  animation: result-reveal 460ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+.result-content > :nth-child(2) {
+  animation-delay: 45ms;
+}
+
+.result-content > :nth-child(3) {
+  animation-delay: 90ms;
+}
+
+.result-content > :nth-child(4) {
+  animation-delay: 135ms;
+}
+
+.result-content > :nth-child(5) {
+  animation-delay: 180ms;
+}
+
+.result-content > :nth-child(6) {
+  animation-delay: 225ms;
+}
+
+.result-content > :nth-child(7) {
+  animation-delay: 270ms;
+}
+
+@keyframes result-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes state-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .campaign-intro {
   padding: 18px;
   border: 1px solid #dfe8db;
@@ -561,6 +644,13 @@ textarea.control {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fff;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.content-card:hover {
+  border-color: #d8e1d4;
+  box-shadow: 0 6px 18px rgb(33 48 33 / 5%);
+  transform: translateY(-1px);
 }
 
 .content-card-heading {
@@ -663,6 +753,7 @@ textarea.control {
   justify-items: center;
   color: var(--muted);
   text-align: center;
+  animation: state-reveal 300ms ease-out both;
 }
 
 .spinner {
@@ -712,6 +803,17 @@ textarea.control {
 @media (max-width: 760px) {
   .shell {
     width: min(100% - 32px, 560px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   .topbar {

@@ -2,8 +2,6 @@
 
 # Racik
 
-### Ship It — Your First Production AI Product
-
 **A live, bilingual AI campaign studio for Indonesian small businesses.**
 
 Racik turns a short product brief into an editable campaign direction, Instagram caption, short-video script, WhatsApp message, three Instagram Story slides, a call to action, five hashtags, and assumptions to verify. It is designed for owners who need a practical starting point rather than a general-purpose chatbot, and keeps the owner in control of every claim before publication. I chose the idea because it solves a concrete marketing workflow while making accuracy, review, and safe AI output part of the product.
